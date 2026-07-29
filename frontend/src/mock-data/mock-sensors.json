@@ -1,0 +1,67 @@
+[
+  {
+    "sensorId": "SEN-CF14-A",
+    "stationName": "Industrial Corridor Monitor A",
+    "location": { "lat": 37.4185, "lng": -122.1390 },
+    "timestamp": "2026-07-29T06:00:00.000Z",
+    "ph": 5.4,
+    "turbidityNTU": 42.1,
+    "dissolvedOxygenMgL": 3.8,
+    "conductivityUsCm": 812,
+    "temperatureC": 19.2,
+    "detectedContaminants": ["industrial_solvent"],
+    "anomalyScore": 0.81
+  },
+  {
+    "sensorId": "SEN-CF14-B",
+    "stationName": "Industrial Corridor Monitor B",
+    "location": { "lat": 37.4179, "lng": -122.1401 },
+    "timestamp": "2026-07-29T06:00:05.000Z",
+    "ph": 5.6,
+    "turbidityNTU": 39.7,
+    "dissolvedOxygenMgL": 4.0,
+    "conductivityUsCm": 798,
+    "temperatureC": 19.0,
+    "detectedContaminants": ["industrial_solvent"],
+    "anomalyScore": 0.77
+  },
+  {
+    "sensorId": "SEN-CF07-A",
+    "stationName": "Millbrook Confluence Monitor",
+    "location": { "lat": 37.4301, "lng": -122.1523 },
+    "timestamp": "2026-07-29T06:00:00.000Z",
+    "ph": 7.1,
+    "turbidityNTU": 6.2,
+    "dissolvedOxygenMgL": 8.4,
+    "conductivityUsCm": 310,
+    "temperatureC": 17.5,
+    "detectedContaminants": [],
+    "anomalyScore": 0.05
+  },
+  {
+    "sensorId": "SEN-CF19-A",
+    "stationName": "Downtown Intake Monitor",
+    "location": { "lat": 37.4002, "lng": -122.1201 },
+    "timestamp": "2026-07-29T06:05:00.000Z",
+    "ph": 6.3,
+    "turbidityNTU": 21.4,
+    "dissolvedOxygenMgL": 5.6,
+    "conductivityUsCm": 540,
+    "temperatureC": 18.4,
+    "detectedContaminants": ["industrial_solvent"],
+    "anomalyScore": 0.58
+  },
+  {
+    "sensorId": "SEN-CF01-A",
+    "stationName": "Headwaters Baseline Monitor",
+    "location": { "lat": 37.4423, "lng": -122.1710 },
+    "timestamp": "2026-07-29T06:00:00.000Z",
+    "ph": 7.4,
+    "turbidityNTU": 3.1,
+    "dissolvedOxygenMgL": 9.1,
+    "conductivityUsCm": 220,
+    "temperatureC": 16.8,
+    "detectedContaminants": [],
+    "anomalyScore": 0.02
+  }
+]

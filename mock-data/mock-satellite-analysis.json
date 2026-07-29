@@ -1,0 +1,36 @@
+{
+  "analysisId": "sat_20260729_0600",
+  "capturedAt": "2026-07-29T05:55:00.000Z",
+  "regionOfInterest": {
+    "basinName": "Cedar Fork Basin",
+    "boundingBox": {
+      "north": 37.45,
+      "south": 37.36,
+      "east": -122.07,
+      "west": -122.18
+    }
+  },
+  "findings": [
+    {
+      "nodeId": "CF-14",
+      "observation": "Visible surface discoloration plume, approx. 340m in length, consistent with industrial discharge.",
+      "plumeColorIndex": "brown-gray",
+      "estimatedPlumeAreaM2": 18500,
+      "confidence": 0.74
+    },
+    {
+      "nodeId": "CF-19",
+      "observation": "Faint discoloration trailing downstream from CF-14, diffusing.",
+      "plumeColorIndex": "light-gray",
+      "estimatedPlumeAreaM2": 6200,
+      "confidence": 0.51
+    },
+    {
+      "nodeId": "CF-01",
+      "observation": "No visible anomaly at headwaters.",
+      "plumeColorIndex": "clear",
+      "estimatedPlumeAreaM2": 0,
+      "confidence": 0.95
+    }
+  ]
+}

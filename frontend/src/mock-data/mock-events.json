@@ -1,0 +1,195 @@
+[
+  {
+    "type": "workflow.started",
+    "investigationId": "inv_8f3a1c",
+    "timestamp": "2026-07-29T06:12:00.100Z",
+    "payload": { "scenarioId": "scenario-industrial-solvent-01" }
+  },
+  {
+    "type": "agent.started",
+    "investigationId": "inv_8f3a1c",
+    "timestamp": "2026-07-29T06:12:00.500Z",
+    "payload": { "agent": "sensing", "iteration": 1 }
+  },
+  {
+    "type": "tool.called",
+    "investigationId": "inv_8f3a1c",
+    "timestamp": "2026-07-29T06:12:01.000Z",
+    "payload": { "agent": "sensing", "tool": "sensor_reader", "input": { "stationIds": ["CF-14", "CF-15"] } }
+  },
+  {
+    "type": "tool.completed",
+    "investigationId": "inv_8f3a1c",
+    "timestamp": "2026-07-29T06:12:01.340Z",
+    "payload": { "agent": "sensing", "tool": "sensor_reader", "output": { "readingsReturned": 2, "anomalyDetected": true }, "durationMs": 340 }
+  },
+  {
+    "type": "reasoning.updated",
+    "investigationId": "inv_8f3a1c",
+    "timestamp": "2026-07-29T06:12:02.000Z",
+    "payload": {
+      "step": {
+        "stepId": "step_001",
+        "agent": "sensing",
+        "iteration": 1,
+        "thought": "Two adjacent sensors both show elevated conductivity and depressed pH.",
+        "toolUsed": "sensor_reader",
+        "observation": "2 anomalous readings at CF-14 cluster",
+        "conclusion": "Likely point-source contamination near CF-14.",
+        "confidenceAfter": 0.62,
+        "timestamp": "2026-07-29T06:12:02.000Z"
+      }
+    }
+  },
+  {
+    "type": "confidence.updated",
+    "investigationId": "inv_8f3a1c",
+    "timestamp": "2026-07-29T06:12:02.050Z",
+    "payload": { "previousConfidence": 0.0, "newConfidence": 0.62, "agent": "sensing" }
+  },
+  {
+    "type": "state.updated",
+    "investigationId": "inv_8f3a1c",
+    "timestamp": "2026-07-29T06:12:02.060Z",
+    "payload": { "changedFields": ["evidence", "confidence", "reasoningHistory", "telemetry"] }
+  },
+  {
+    "type": "agent.completed",
+    "investigationId": "inv_8f3a1c",
+    "timestamp": "2026-07-29T06:12:02.200Z",
+    "payload": { "agent": "sensing", "iteration": 1, "durationMs": 1700 }
+  },
+  {
+    "type": "agent.started",
+    "investigationId": "inv_8f3a1c",
+    "timestamp": "2026-07-29T06:12:02.300Z",
+    "payload": { "agent": "hydrodynamic", "iteration": 1 }
+  },
+  {
+    "type": "tool.called",
+    "investigationId": "inv_8f3a1c",
+    "timestamp": "2026-07-29T06:13:09.700Z",
+    "payload": { "agent": "hydrodynamic", "tool": "hydrodynamic_calculator", "input": { "sourceNode": "CF-14", "flowRateM3s": 7.1 } }
+  },
+  {
+    "type": "tool.completed",
+    "investigationId": "inv_8f3a1c",
+    "timestamp": "2026-07-29T06:13:09.900Z",
+    "payload": { "agent": "hydrodynamic", "tool": "hydrodynamic_calculator", "output": { "etaHoursToCF19": 4.0 }, "durationMs": 210 }
+  },
+  {
+    "type": "reasoning.updated",
+    "investigationId": "inv_8f3a1c",
+    "timestamp": "2026-07-29T06:13:10.000Z",
+    "payload": {
+      "step": {
+        "stepId": "step_002",
+        "agent": "hydrodynamic",
+        "iteration": 1,
+        "thought": "Model plume travel time to CF-19 given current flow rate.",
+        "toolUsed": "hydrodynamic_calculator",
+        "observation": "Plume ETA to CF-19: ~4 hours",
+        "conclusion": "Downtown intake at risk within the response window.",
+        "confidenceAfter": 0.74,
+        "timestamp": "2026-07-29T06:13:10.000Z"
+      }
+    }
+  },
+  {
+    "type": "confidence.updated",
+    "investigationId": "inv_8f3a1c",
+    "timestamp": "2026-07-29T06:13:10.050Z",
+    "payload": { "previousConfidence": 0.62, "newConfidence": 0.74, "agent": "hydrodynamic" }
+  },
+  {
+    "type": "agent.completed",
+    "investigationId": "inv_8f3a1c",
+    "timestamp": "2026-07-29T06:13:10.200Z",
+    "payload": { "agent": "hydrodynamic", "iteration": 1, "durationMs": 900 }
+  },
+  {
+    "type": "agent.started",
+    "investigationId": "inv_8f3a1c",
+    "timestamp": "2026-07-29T06:13:10.300Z",
+    "payload": { "agent": "regulatory", "iteration": 1 }
+  },
+  {
+    "type": "tool.called",
+    "investigationId": "inv_8f3a1c",
+    "timestamp": "2026-07-29T06:13:34.800Z",
+    "payload": { "agent": "regulatory", "tool": "factory_database", "input": { "nearNode": "CF-14", "radiusMeters": 500 } }
+  },
+  {
+    "type": "tool.completed",
+    "investigationId": "inv_8f3a1c",
+    "timestamp": "2026-07-29T06:13:34.900Z",
+    "payload": { "agent": "regulatory", "tool": "factory_database", "output": { "factoriesFound": 1, "factoryId": "FAC-07" }, "durationMs": 95 }
+  },
+  {
+    "type": "reasoning.updated",
+    "investigationId": "inv_8f3a1c",
+    "timestamp": "2026-07-29T06:13:35.000Z",
+    "payload": {
+      "step": {
+        "stepId": "step_003",
+        "agent": "regulatory",
+        "iteration": 1,
+        "thought": "Cross-reference contaminant signature against permitted dischargers near CF-14.",
+        "toolUsed": "factory_database",
+        "observation": "FAC-07 is the sole permitted solvent discharger within 500m of CF-14.",
+        "conclusion": "FAC-07 is the most likely violator; measured levels exceed permit by 3.4x.",
+        "confidenceAfter": 0.87,
+        "timestamp": "2026-07-29T06:13:35.000Z"
+      }
+    }
+  },
+  {
+    "type": "confidence.updated",
+    "investigationId": "inv_8f3a1c",
+    "timestamp": "2026-07-29T06:13:35.050Z",
+    "payload": { "previousConfidence": 0.74, "newConfidence": 0.87, "agent": "regulatory" }
+  },
+  {
+    "type": "agent.completed",
+    "investigationId": "inv_8f3a1c",
+    "timestamp": "2026-07-29T06:13:35.200Z",
+    "payload": { "agent": "regulatory", "iteration": 1, "durationMs": 24900 }
+  },
+  {
+    "type": "agent.started",
+    "investigationId": "inv_8f3a1c",
+    "timestamp": "2026-07-29T06:13:35.300Z",
+    "payload": { "agent": "mitigation", "iteration": 1 }
+  },
+  {
+    "type": "agent.completed",
+    "investigationId": "inv_8f3a1c",
+    "timestamp": "2026-07-29T06:13:39.800Z",
+    "payload": { "agent": "mitigation", "iteration": 1, "durationMs": 4500 }
+  },
+  {
+    "type": "approval.requested",
+    "investigationId": "inv_8f3a1c",
+    "timestamp": "2026-07-29T06:13:40.000Z",
+    "payload": {
+      "recommendation": {
+        "summary": "Issue emergency containment order to Factory FAC-07 and notify downstream municipalities.",
+        "primaryHypothesis": "Industrial solvent discharge from FAC-07",
+        "suspectedFactoryId": "FAC-07",
+        "contaminant": "industrial_solvent",
+        "overallSeverity": "high",
+        "actions": [],
+        "requiresApproval": true
+      }
+    }
+  },
+  {
+    "type": "workflow.completed",
+    "investigationId": "inv_8f3a1c",
+    "timestamp": "2026-07-29T06:20:00.000Z",
+    "payload": {
+      "status": "completed",
+      "recommendation": { "summary": "Emergency containment order approved and issued to FAC-07." }
+    }
+  }
+]

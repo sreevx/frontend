@@ -1,0 +1,61 @@
+{
+  "basinName": "Cedar Fork Basin",
+  "nodes": [
+    {
+      "nodeId": "CF-01",
+      "name": "Cedar Fork Headwaters",
+      "location": { "lat": 37.4423, "lng": -122.1710 },
+      "type": "river_segment",
+      "flowRateM3s": 4.2,
+      "connectedTo": ["CF-07"]
+    },
+    {
+      "nodeId": "CF-07",
+      "name": "Millbrook Tributary Confluence",
+      "location": { "lat": 37.4301, "lng": -122.1523 },
+      "type": "tributary",
+      "flowRateM3s": 6.8,
+      "connectedTo": ["CF-14"]
+    },
+    {
+      "nodeId": "CF-14",
+      "name": "Industrial Corridor Segment",
+      "location": { "lat": 37.4185, "lng": -122.1390 },
+      "type": "river_segment",
+      "flowRateM3s": 7.1,
+      "connectedTo": ["CF-15", "CF-19"]
+    },
+    {
+      "nodeId": "CF-15",
+      "name": "Riverside Reservoir",
+      "location": { "lat": 37.4050, "lng": -122.1288 },
+      "type": "reservoir",
+      "flowRateM3s": 2.9,
+      "connectedTo": ["CF-22"]
+    },
+    {
+      "nodeId": "CF-19",
+      "name": "Downtown Municipal Intake",
+      "location": { "lat": 37.4002, "lng": -122.1201 },
+      "type": "river_segment",
+      "flowRateM3s": 7.4,
+      "connectedTo": ["CF-22"]
+    },
+    {
+      "nodeId": "CF-22",
+      "name": "Lower Cedar Fork Estuary",
+      "location": { "lat": 37.3820, "lng": -122.1005 },
+      "type": "estuary",
+      "flowRateM3s": 9.6,
+      "connectedTo": ["CF-30"]
+    },
+    {
+      "nodeId": "CF-30",
+      "name": "Pacific Coastal Outlet",
+      "location": { "lat": 37.3610, "lng": -122.0790 },
+      "type": "coastal_outlet",
+      "flowRateM3s": 11.3,
+      "connectedTo": []
+    }
+  ]
+}

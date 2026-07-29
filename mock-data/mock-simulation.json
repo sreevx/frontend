@@ -1,0 +1,58 @@
+{
+  "scenarios": [
+    {
+      "scenarioId": "scenario-industrial-solvent-01",
+      "name": "Industrial Solvent Discharge",
+      "description": "Upstream factory discharge event with rising turbidity and solvent signature, clear single-source localization.",
+      "expectedSeverity": "high",
+      "ticks": [
+        {
+          "tickNumber": 1,
+          "timestamp": "2026-07-29T06:00:00.000Z",
+          "newTelemetry": ["SEN-CF14-A", "SEN-CF14-B"],
+          "note": "Initial anomaly detected at industrial corridor."
+        },
+        {
+          "tickNumber": 2,
+          "timestamp": "2026-07-29T06:05:00.000Z",
+          "newTelemetry": ["SEN-CF19-A"],
+          "note": "Contamination signature reaches downtown intake sensor, confirming downstream spread."
+        }
+      ]
+    },
+    {
+      "scenarioId": "scenario-false-positive-01",
+      "name": "Agricultural Runoff (False Positive)",
+      "description": "Naturally elevated turbidity following rainfall; no chemical signature and no regulatory violation. Tests that the swarm does not over-escalate.",
+      "expectedSeverity": "low",
+      "ticks": [
+        {
+          "tickNumber": 1,
+          "timestamp": "2026-07-29T07:00:00.000Z",
+          "newTelemetry": ["SEN-CF07-A"],
+          "note": "Mild turbidity rise, pH and conductivity remain within normal range — consistent with runoff, not a discharge event."
+        }
+      ]
+    },
+    {
+      "scenarioId": "scenario-multi-source-01",
+      "name": "Ambiguous Multi-Source Event",
+      "description": "Two simultaneous anomalies (solvent signature at CF-14, heavy-metal signature further downstream) forcing the swarm through multiple reasoning iterations before confidence clears the threshold.",
+      "expectedSeverity": "critical",
+      "ticks": [
+        {
+          "tickNumber": 1,
+          "timestamp": "2026-07-29T08:00:00.000Z",
+          "newTelemetry": ["SEN-CF14-A"],
+          "note": "Solvent signature at CF-14."
+        },
+        {
+          "tickNumber": 2,
+          "timestamp": "2026-07-29T08:10:00.000Z",
+          "newTelemetry": ["SEN-CF19-A"],
+          "note": "Second, distinct signature downstream — low initial confidence, triggers additional Sensing Agent iteration before Hydrodynamic hand-off."
+        }
+      ]
+    }
+  ]
+}

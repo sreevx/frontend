@@ -1,0 +1,208 @@
+{
+  "investigationId": "inv_8f3a1c",
+  "scenarioId": "scenario-industrial-solvent-01",
+  "status": "awaiting_approval",
+  "telemetry": [
+    {
+      "sensorId": "SEN-CF14-A",
+      "stationName": "Industrial Corridor Monitor A",
+      "location": { "lat": 37.4185, "lng": -122.1390 },
+      "timestamp": "2026-07-29T06:00:00.000Z",
+      "ph": 5.4,
+      "turbidityNTU": 42.1,
+      "dissolvedOxygenMgL": 3.8,
+      "conductivityUsCm": 812,
+      "temperatureC": 19.2,
+      "detectedContaminants": ["industrial_solvent"],
+      "anomalyScore": 0.81
+    }
+  ],
+  "watershedNetwork": {
+    "basinName": "Cedar Fork Basin",
+    "nodes": [
+      {
+        "nodeId": "CF-14",
+        "name": "Industrial Corridor Segment",
+        "location": { "lat": 37.4185, "lng": -122.1390 },
+        "type": "river_segment",
+        "flowRateM3s": 7.1,
+        "connectedTo": ["CF-15", "CF-19"]
+      }
+    ]
+  },
+  "weather": [
+    {
+      "timestamp": "2026-07-29T06:00:00.000Z",
+      "location": { "lat": 37.4185, "lng": -122.1390 },
+      "precipitationMm": 0.0,
+      "windSpeedKmh": 11.2,
+      "windDirectionDeg": 245,
+      "temperatureC": 19.4,
+      "recentRainfallTrend": "stable"
+    }
+  ],
+  "factories": [
+    {
+      "factoryId": "FAC-07",
+      "name": "Cedarline Solvent Processing Plant",
+      "location": { "lat": 37.4192, "lng": -122.1405 },
+      "industryType": "chemical_processing",
+      "permittedContaminants": ["industrial_solvent"],
+      "permittedDischargeLimits": { "industrial_solvent": 0.5 },
+      "lastInspectionDate": "2026-04-11",
+      "complianceHistoryFlags": 2
+    }
+  ],
+  "evidence": [
+    {
+      "evidenceId": "ev_001",
+      "sourceAgent": "sensing",
+      "sourceTool": "sensor_reader",
+      "description": "Anomalous pH drop and conductivity spike at CF-14, consistent with solvent discharge.",
+      "confidenceContribution": 0.35,
+      "timestamp": "2026-07-29T06:12:02.000Z"
+    },
+    {
+      "evidenceId": "ev_002",
+      "sourceAgent": "hydrodynamic",
+      "sourceTool": "hydrodynamic_calculator",
+      "description": "Flow model places CF-19 municipal intake within predicted plume path within 4 hours.",
+      "confidenceContribution": 0.22,
+      "timestamp": "2026-07-29T06:13:10.000Z"
+    },
+    {
+      "evidenceId": "ev_003",
+      "sourceAgent": "regulatory",
+      "sourceTool": "factory_database",
+      "description": "FAC-07 discharge limit for industrial_solvent is 0.5 mg/L; measured concentration implies ~3.4x exceedance.",
+      "confidenceContribution": 0.3,
+      "timestamp": "2026-07-29T06:13:35.000Z"
+    }
+  ],
+  "violations": [
+    {
+      "violationId": "vio_001",
+      "factoryId": "FAC-07",
+      "contaminant": "industrial_solvent",
+      "measuredValueMgL": 1.7,
+      "legalLimitMgL": 0.5,
+      "exceedanceFactor": 3.4,
+      "confidence": 0.83
+    }
+  ],
+  "affectedLocations": [
+    {
+      "nodeId": "CF-19",
+      "name": "Downtown Municipal Intake",
+      "location": { "lat": 37.4002, "lng": -122.1201 },
+      "estimatedArrivalTime": "2026-07-29T10:00:00.000Z",
+      "predictedConcentrationMgL": 0.9,
+      "severity": "high"
+    },
+    {
+      "nodeId": "CF-22",
+      "name": "Lower Cedar Fork Estuary",
+      "location": { "lat": 37.3820, "lng": -122.1005 },
+      "estimatedArrivalTime": "2026-07-29T14:30:00.000Z",
+      "predictedConcentrationMgL": 0.4,
+      "severity": "moderate"
+    }
+  ],
+  "confidence": 0.87,
+  "reasoningHistory": [
+    {
+      "stepId": "step_001",
+      "agent": "sensing",
+      "iteration": 1,
+      "thought": "Two adjacent sensors both show elevated conductivity and depressed pH — check for a point source.",
+      "toolUsed": "sensor_reader",
+      "observation": "2 anomalous readings at CF-14 cluster",
+      "conclusion": "Likely point-source contamination near CF-14.",
+      "confidenceAfter": 0.62,
+      "timestamp": "2026-07-29T06:12:02.000Z"
+    },
+    {
+      "stepId": "step_002",
+      "agent": "hydrodynamic",
+      "iteration": 1,
+      "thought": "Given flow rate 7.1 m3/s at CF-14 and downstream topology, model plume travel time to CF-19.",
+      "toolUsed": "hydrodynamic_calculator",
+      "observation": "Plume ETA to CF-19: ~4 hours",
+      "conclusion": "Downtown intake at risk within the response window.",
+      "confidenceAfter": 0.74,
+      "timestamp": "2026-07-29T06:13:10.000Z"
+    },
+    {
+      "stepId": "step_003",
+      "agent": "regulatory",
+      "iteration": 1,
+      "thought": "Cross-reference contaminant signature against factories with industrial_solvent permits near CF-14.",
+      "toolUsed": "factory_database",
+      "observation": "FAC-07 is the sole permitted solvent discharger within 500m of CF-14.",
+      "conclusion": "FAC-07 is the most likely violator; measured levels exceed permit by 3.4x.",
+      "confidenceAfter": 0.87,
+      "timestamp": "2026-07-29T06:13:35.000Z"
+    }
+  ],
+  "toolHistory": [
+    {
+      "callId": "call_001",
+      "agent": "sensing",
+      "tool": "sensor_reader",
+      "input": { "stationIds": ["CF-14", "CF-15"] },
+      "output": { "readingsReturned": 2, "anomalyDetected": true },
+      "durationMs": 340,
+      "timestamp": "2026-07-29T06:12:01.340Z"
+    },
+    {
+      "callId": "call_002",
+      "agent": "hydrodynamic",
+      "tool": "hydrodynamic_calculator",
+      "input": { "sourceNode": "CF-14", "flowRateM3s": 7.1 },
+      "output": { "etaHoursToCF19": 4.0 },
+      "durationMs": 210,
+      "timestamp": "2026-07-29T06:13:09.900Z"
+    },
+    {
+      "callId": "call_003",
+      "agent": "regulatory",
+      "tool": "factory_database",
+      "input": { "nearNode": "CF-14", "radiusMeters": 500 },
+      "output": { "factoriesFound": 1, "factoryId": "FAC-07" },
+      "durationMs": 95,
+      "timestamp": "2026-07-29T06:13:34.900Z"
+    }
+  ],
+  "workflowIteration": 1,
+  "maxIterations": 5,
+  "approvalStatus": "pending",
+  "approvalNotes": null,
+  "recommendation": {
+    "summary": "Issue emergency containment order to Factory FAC-07 and notify downstream municipalities before plume reaches CF-19 intake.",
+    "primaryHypothesis": "Industrial solvent discharge from FAC-07 exceeding permitted limits by 3.4x.",
+    "suspectedFactoryId": "FAC-07",
+    "contaminant": "industrial_solvent",
+    "overallSeverity": "high",
+    "actions": [
+      {
+        "actionId": "act_01",
+        "title": "Issue emergency containment order",
+        "description": "Halt discharge at FAC-07 pending inspection.",
+        "urgency": "critical",
+        "estimatedEnvironmentalImpact": "Prevents further spread to downtown municipal intake within 4-hour window.",
+        "requiresHumanApproval": true
+      },
+      {
+        "actionId": "act_02",
+        "title": "Notify downtown water treatment operators",
+        "description": "Advise CF-19 intake operators of predicted contamination arrival ~10:00 UTC.",
+        "urgency": "high",
+        "estimatedEnvironmentalImpact": "Enables intake filtration adjustment or temporary shutoff.",
+        "requiresHumanApproval": true
+      }
+    ],
+    "requiresApproval": true
+  },
+  "createdAt": "2026-07-29T06:12:00.000Z",
+  "updatedAt": "2026-07-29T06:13:40.000Z"
+}

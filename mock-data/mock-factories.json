@@ -1,0 +1,32 @@
+[
+  {
+    "factoryId": "FAC-07",
+    "name": "Cedarline Solvent Processing Plant",
+    "location": { "lat": 37.4192, "lng": -122.1405 },
+    "industryType": "chemical_processing",
+    "permittedContaminants": ["industrial_solvent"],
+    "permittedDischargeLimits": { "industrial_solvent": 0.5 },
+    "lastInspectionDate": "2026-04-11",
+    "complianceHistoryFlags": 2
+  },
+  {
+    "factoryId": "FAC-12",
+    "name": "Millbrook Textile Works",
+    "location": { "lat": 37.4295, "lng": -122.1530 },
+    "industryType": "textiles",
+    "permittedContaminants": ["heavy_metal"],
+    "permittedDischargeLimits": { "heavy_metal": 0.2 },
+    "lastInspectionDate": "2026-02-28",
+    "complianceHistoryFlags": 0
+  },
+  {
+    "factoryId": "FAC-19",
+    "name": "Cedar Fork Municipal Wastewater Facility",
+    "location": { "lat": 37.4008, "lng": -122.1210 },
+    "industryType": "wastewater_treatment",
+    "permittedContaminants": ["sewage"],
+    "permittedDischargeLimits": { "sewage": 1.0 },
+    "lastInspectionDate": "2026-06-02",
+    "complianceHistoryFlags": 1
+  }
+]

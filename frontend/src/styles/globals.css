@@ -1,0 +1,176 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   AquaSentinel — Mission Control base styles
+   ============================================================ */
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html,
+  body {
+    @apply h-full bg-bg-base text-ink-primary font-sans antialiased;
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  body {
+    background-image:
+      radial-gradient(
+        ellipse at top,
+        rgba(56, 189, 248, 0.04) 0%,
+        transparent 55%
+      ),
+      linear-gradient(180deg, #06090F 0%, #05080D 100%);
+    background-attachment: fixed;
+  }
+
+  /* Selection */
+  ::selection {
+    background: rgba(56, 189, 248, 0.3);
+    color: #E6ECF5;
+  }
+
+  /* Scrollbars — minimal, ops-friendly */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1B2433;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #263042;
+  }
+}
+
+@layer components {
+  /* Panel — the foundational card */
+  .panel {
+    @apply bg-bg-surface border border-line-subtle rounded-md shadow-panel;
+  }
+
+  .panel-header {
+    @apply flex items-center justify-between px-3 py-2 border-b border-line-subtle;
+  }
+
+  .panel-title {
+    @apply text-xs uppercase tracking-[0.14em] text-ink-secondary font-medium;
+  }
+
+  .panel-body {
+    @apply p-3;
+  }
+
+  /* Tag / chip */
+  .chip {
+    @apply inline-flex items-center gap-1 px-1.5 py-0.5 rounded-sm text-2xs font-mono uppercase tracking-wider;
+    @apply bg-bg-overlay border border-line-default text-ink-secondary;
+  }
+
+  .chip-severity-low {
+    @apply bg-[rgba(34,211,184,0.08)] border-[rgba(34,211,184,0.3)] text-sev-low;
+  }
+  .chip-severity-moderate {
+    @apply bg-[rgba(245,181,71,0.08)] border-[rgba(245,181,71,0.3)] text-sev-moderate;
+  }
+  .chip-severity-high {
+    @apply bg-[rgba(249,122,71,0.08)] border-[rgba(249,122,71,0.3)] text-sev-high;
+  }
+  .chip-severity-critical {
+    @apply bg-[rgba(229,72,77,0.08)] border-[rgba(229,72,77,0.3)] text-sev-critical;
+  }
+
+  /* Mono label / data */
+  .mono {
+    @apply font-mono tabular-nums tracking-tight;
+  }
+
+  /* Status dot (live indicator) */
+  .status-dot {
+    @apply inline-block w-1.5 h-1.5 rounded-full;
+  }
+  .status-dot-live {
+    @apply bg-sev-low animate-pulseDot;
+  }
+  .status-dot-idle {
+    @apply bg-ink-tertiary;
+  }
+  .status-dot-error {
+    @apply bg-sev-critical;
+  }
+
+  /* Section divider */
+  .divider {
+    @apply h-px bg-line-subtle;
+  }
+
+  /* Subtle grid background for map / graph regions */
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Truncate with ellipsis after N lines */
+  .clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/* React Flow theme overrides — match Mission Control dark */
+.react-flow__background {
+  background-color: #06090F;
+}
+.react-flow__node {
+  font-family: inherit;
+}
+.react-flow__edge-path {
+  stroke: #263042;
+  stroke-width: 1.5;
+}
+.react-flow__edge.selected .react-flow__edge-path,
+.react-flow__edge:hover .react-flow__edge-path {
+  stroke: #38BDF8;
+}
+.react-flow__controls {
+  background: #0B1018;
+  border: 1px solid #1B2433;
+}
+.react-flow__controls-button {
+  background: transparent;
+  border-bottom: 1px solid #1B2433;
+  color: #9AA7BD;
+}
+.react-flow__controls-button:hover {
+  background: #101723;
+  color: #E6ECF5;
+}
+.react-flow__attribution {
+  background: transparent;
+  color: #5E6B82;
+  font-size: 9px;
+}
